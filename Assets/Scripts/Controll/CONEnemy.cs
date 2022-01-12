@@ -121,6 +121,10 @@ public class CONEnemy : CONCharacter
     private void Die()
     {
         base.SetActive(false);
-        StopCoroutine(freezeCo);
+        
+        if(freezeCo != null)
+        {
+            StopCoroutine(freezeCo);
+        }
     }
 }
