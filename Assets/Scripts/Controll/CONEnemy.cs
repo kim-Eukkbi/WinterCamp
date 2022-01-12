@@ -7,6 +7,9 @@ public class CONEnemy : CONCharacter
     public float maxHp;
     public float hp;
 
+    public bool isFreezed = false;
+    private Coroutine freezeCo;
+
     public CONTower targetTower;
 
     public override void Awake()
@@ -43,6 +46,8 @@ public class CONEnemy : CONCharacter
 
     public override void Update()
     {
+        if(isFreezed) return;
+
         base.Update();
 
         if(IsInAttackRange() && canAttack)
@@ -92,8 +97,26 @@ public class CONEnemy : CONCharacter
         Mathf.Clamp(hp, 0, maxHp);
     }
 
+    public void Freeze(float time)
+    {
+        if(freezeCo != null)
+        {
+            StopCoroutine(freezeCo);
+        }
+
+        freezeCo = StartCoroutine(UnFreeze(time));
+    }
+
+    private IEnumerator UnFreeze(float time)
+    {
+        yield return new WaitForSeconds(time);
+
+        isFreezed = false;
+    }
+
     private void Die()
     {
         base.SetActive(false);
+        StopCoroutine(freezeCo);
     }
 }

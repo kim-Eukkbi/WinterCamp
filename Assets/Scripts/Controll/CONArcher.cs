@@ -21,11 +21,6 @@ public class CONArcher : CONCharacter
         base.OnDisable();
     }
 
-    protected override void cleanUpOnDisable()
-    {
-        
-    }
-
     protected override void firstUpdate()
     {
         base.firstUpdate();
@@ -34,8 +29,6 @@ public class CONArcher : CONCharacter
     public override void Update() 
     {
         base.Update();
-
-
     }
 
     private void SerchTarget()

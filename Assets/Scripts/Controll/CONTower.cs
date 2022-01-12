@@ -17,6 +17,16 @@ public class CONTower : CONEntity
         archerList = new List<CONArcher>();
     }
 
+    public override void Start()
+    {
+        base.Start();
+
+        GameSceneClass.gMGGame.WaveClear += () =>
+        {
+            hp = maxHp;
+        };
+    }
+
     public override void OnEnable()
     {
         base.OnEnable();
@@ -25,11 +35,6 @@ public class CONTower : CONEntity
     public override void OnDisable()
     {
         base.OnDisable();
-    }
-
-    protected override void cleanUpOnDisable()
-    {
-
     }
 
     protected override void firstUpdate()
@@ -66,6 +71,7 @@ public class CONTower : CONEntity
 
     private void Die()
     {
+        GameSceneClass.gMGGame.GameOver?.Invoke();
         base.SetActive(false);
     }
 }
