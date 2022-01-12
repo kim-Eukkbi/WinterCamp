@@ -16,11 +16,6 @@ public class CONEnemy : CONEntity
     public override void Awake()
     {
         base.Awake();
-
-        hp = maxHp;
-        attackTimer = attcktimerMax;
-
-        targetTower = GameSceneClass.gMGGame.tower;
     }
 
     public override void OnEnable()
@@ -38,7 +33,7 @@ public class CONEnemy : CONEntity
         hp = maxHp;
         attackTimer = attcktimerMax;
 
-        targetTower = GameSceneClass.gMGGame.tower;
+        targetTower = GameObject.FindObjectOfType<CONTower>();
     }
 
     protected override void firstUpdate()

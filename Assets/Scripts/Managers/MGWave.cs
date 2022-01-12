@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Linq;
 
 public class MGWave : MonoBehaviour
 {
@@ -17,7 +18,11 @@ public class MGWave : MonoBehaviour
 
     private void Awake() 
     {
-        waveList = new List<WaveSO>();   
+        GameSceneClass.gMGWave = this;
+
+        waveList = new List<WaveSO>();
+
+        waveList = Resources.LoadAll<WaveSO>(typeof(WaveSO).ToString()).ToList();
 
         nextWave = 0; 
     }

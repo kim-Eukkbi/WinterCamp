@@ -17,6 +17,10 @@ public class MGPool : MonoBehaviour
     public List<int> poolHeroCountList;
     public int poolHeroMaxCount;
 
+    // public List<GameObject> poolEnemyObjList;
+    // public List<int> poolEnemyCountList;
+    // public int poolEnemyMaxCount;
+
     public Transform myTrm;
 
     void Awake()
@@ -30,6 +34,7 @@ public class MGPool : MonoBehaviour
 
         // 게임에서 필요한 객체타입별로 갯수 세팅
         poolHeroMaxCount = poolHeroObjList.Count;
+        //poolEnemyMaxCount = poolEnemyObjList.Count;
 
         myTrm = this.transform;
 
@@ -45,6 +50,12 @@ public class MGPool : MonoBehaviour
         }
 
         // 개별 객체 초기화 계속...
+
+        // for (int i = 0; i < poolEnemyObjList.Count; i++)
+        // {
+        //     poolObjList.Add(poolEnemyObjList[i]);
+        //     poolObjCount.Add(poolEnemyCountList[i]);
+        // }
 
         
         // 객체별 최대갯수 만큼 추가

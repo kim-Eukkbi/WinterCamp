@@ -51,5 +51,6 @@ public class GameSceneClass
 {
     public static MGGame gMGGame;
     public static MGPool gMGPool;
+    public static MGWave gMGWave;
     public static UIRootGame gUiRootGame;
 }

@@ -45,8 +45,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   waveList: []
   nextWave: 0
-  enemySpawnPos: {x: 0, y: 0, z: 0}
-  ranMaxX: 10
-  ranMinX: -10
-  ranMaxY: 10
-  ranMinY: 10
+  enemySpawnPos: {x: 18, y: 0, z: 0}
+  ranMaxX: 5
+  ranMinX: -5
+  ranMaxY: 5
+  ranMinY: -5
