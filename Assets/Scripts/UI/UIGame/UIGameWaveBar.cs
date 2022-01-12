@@ -5,8 +5,7 @@ using UnityEngine.UI;
 
 public class UIGameWaveBar : MonoBehaviour
 {
-    private float waveAmount = 1;
-
+    private float amount = 0;
     private float waveStage = 1;
 
     private Slider waveSlider;
@@ -21,8 +20,16 @@ public class UIGameWaveBar : MonoBehaviour
 
     void Init()
     {
-        waveSlider.value = waveAmount;
+        waveSlider.value = amount;
+
         waveText.text = "Wave " + waveStage.ToString();
+    }
+
+    public void SetValues(float curEnemy,float maxEnemy,int curStage)
+    {
+        amount = curEnemy / maxEnemy;
+        waveStage = curStage;
+        Init();
     }
 
 

@@ -10,6 +10,7 @@ public class MGWave : MonoBehaviour
     public int nextWave;
 
     public Vector3 enemySpawnPos;
+    public List<GameObject> enemyList;
 
     public float ranMaxX = 10;
     public float ranMinX = -10;
@@ -29,16 +30,20 @@ public class MGWave : MonoBehaviour
 
     private void Start()
     {
-        StartWave();
+       StartCoroutine(StartWave());
     }
 
-    public void StartWave()
+    public IEnumerator StartWave()
     {
         for(int i = 0; i < waveList[nextWave].enemyAmount; i++)
         {
-            Vector3 spawnPos = new Vector3(enemySpawnPos.x + Random.Range(ranMinX, ranMaxX), enemySpawnPos.y + Random.Range(ranMinY, ranMaxY));
+            yield return new WaitForSeconds(.2f);
+            Vector3 spawnPos = new Vector3(enemySpawnPos.x, enemySpawnPos.y + Random.Range(ranMinY, ranMaxY));
+            
+            enemyList.Add(GameSceneClass.gMGPool.CreateObj(ePrefabs.Enemy, spawnPos).gameObject);
 
-            GameSceneClass.gMGPool.CreateObj(ePrefabs.Enemy, spawnPos);
+            GameSceneClass.gUiRootGame.GetComponentInChildren<UIGameWaveBar>()
+                .SetValues(enemyList.Count, GameSceneClass.gMGPool.poolObjCount[0], nextWave +1);
         }
 
         nextWave++;
