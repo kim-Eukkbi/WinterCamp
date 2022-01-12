@@ -76,6 +76,11 @@ public class CONEntity : MonoBehaviour
         myTrm.localPosition = inVec;
     }
 
+    public void SetLocalScale(Vector3 inVec)
+    {
+        myTrm.localScale = inVec;
+    }
+
     public bool IsActive()
     {
         return myObj.activeInHierarchy;

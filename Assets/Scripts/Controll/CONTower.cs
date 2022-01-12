@@ -2,16 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CONCharacter : CONEntity
+public class CONTower : CONEntity
 {
-    // 캐릭터가 가지고 있는 고유 스탯 선언
-    // FSM, Detect 기능 등
-    // 고유 캐릭터 스탯 데이터
-    // 애니메이션 정보
-
-    public float damage;
-
-    public CONEntity targetEnemy;
+    public float hp;
 
     public override void Awake()
     {
@@ -38,4 +31,19 @@ public class CONCharacter : CONEntity
         base.firstUpdate();
     }
 
+    public void Damaged(float damage)
+    {
+        if(this.hp - damage <= 0)
+        {
+            this.hp = 0;
+            Die();
+        }
+
+        this.hp -= damage;
+    }
+
+    private void Die()
+    {
+        base.SetActive(false);
+    }
 }

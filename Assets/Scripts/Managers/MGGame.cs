@@ -11,6 +11,8 @@ public class MGGame : MonoBehaviour
 
     List<CONEntity> heroConList = new List<CONEntity>();
 
+    public CONTower tower;
+
     void Awake()
     {
         GameSceneClass.gMGGame = this;
@@ -23,6 +25,8 @@ public class MGGame : MonoBehaviour
         // _gHeroManager = new MGHero.MGHero();
 
         // Global._gameStat = eGameStatus.Playing;
+
+        tower = GameObject.Instantiate(Global.prefabsDic[ePrefabs.Tower]).GetComponent<CONTower>();
 
         GameObject.Instantiate(Global.prefabsDic[ePrefabs.MainCamera]);
 
