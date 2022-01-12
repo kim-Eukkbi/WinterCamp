@@ -5,9 +5,9 @@ using UnityEngine.UI;
 
 public class UIGameCastleHpBar : MonoBehaviour
 {
-    private float hpAmount = 1;
+    private float hpAmount;
 
-    private float castleMaxHp = 100;
+    private float castleHp;
 
     private Slider hpSlider;
     private Text hpText;
@@ -22,7 +22,16 @@ public class UIGameCastleHpBar : MonoBehaviour
     void Init()
     {
         hpSlider.value = hpAmount;
-        hpText.text = castleMaxHp.ToString();
+        hpText.text = castleHp.ToString();
+    }
+
+
+    public void SetValues(float curHp, float maxHp)
+    {
+        castleHp = curHp;
+        hpAmount = curHp / maxHp;
+        print(hpAmount);
+        Init();
     }
 
 

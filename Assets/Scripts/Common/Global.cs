@@ -23,12 +23,15 @@ public enum ePrefabs
     HEROS = 1000,
     HeroMan,
     HeroGirl,
+    BackGround,
 
 
     MANAGERS = 2000,
     MGPool,
     MGGame,
     MGWave,
+
+
     UI = 3000,
     UIRoot,
     UIRootLoading,

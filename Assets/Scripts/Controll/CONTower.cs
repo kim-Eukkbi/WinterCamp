@@ -5,6 +5,7 @@ using UnityEngine;
 public class CONTower : CONEntity
 {
     public float hp;
+    public float maxhp;
 
     public override void Awake()
     {
@@ -29,6 +30,7 @@ public class CONTower : CONEntity
     protected override void firstUpdate()
     {
         base.firstUpdate();
+        GameSceneClass.gUiRootGame.GetComponentInChildren<UIGameCastleHpBar>().SetValues(this.hp, this.maxhp);
     }
 
     public void Damaged(float damage)
@@ -40,6 +42,8 @@ public class CONTower : CONEntity
         }
 
         this.hp -= damage;
+        GameSceneClass.gUiRootGame.GetComponentInChildren<UIGameCastleHpBar>().SetValues(this.hp, this.maxhp);
+
     }
 
     private void Die()
