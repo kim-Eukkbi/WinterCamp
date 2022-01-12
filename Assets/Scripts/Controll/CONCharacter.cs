@@ -30,12 +30,11 @@ public class CONCharacter : CONEntity
 
     protected override void cleanUpOnDisable()
     {
-
+        
     }
 
     protected override void firstUpdate()
     {
         base.firstUpdate();
     }
-
 }
