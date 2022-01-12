@@ -5,11 +5,16 @@ using UnityEngine;
 public class CONTower : CONEntity
 {
     public float hp;
-    public float maxhp;
+    public float maxHp;
+
+    public Transform[] archerSpawnPoints;
+    private List<CONArcher> archerList;
 
     public override void Awake()
     {
         base.Awake();
+
+        archerList = new List<CONArcher>();
     }
 
     public override void OnEnable()
@@ -30,20 +35,33 @@ public class CONTower : CONEntity
     protected override void firstUpdate()
     {
         base.firstUpdate();
-        GameSceneClass.gUiRootGame.GetComponentInChildren<UIGameCastleHpBar>().SetValues(this.hp, this.maxhp);
+
+        hp = maxHp;
+        GameSceneClass.gUiRootGame.GetComponentInChildren<UIGameCastleHpBar>().SetValues(this.hp, this.maxHp);
+
+        SpawnArchers();
+    }
+
+    private void SpawnArchers()
+    {
+        for(int i = 0; i < archerSpawnPoints.Length; i++)
+        {
+            archerList.Add(GameSceneClass.gMGPool.CreateObj(ePrefabs.Archer, archerSpawnPoints[i].position).GetComponent<CONArcher>());
+        }
     }
 
     public void Damaged(float damage)
     {
         if(this.hp - damage <= 0)
         {
-            this.hp = 0;
             Die();
         }
 
         this.hp -= damage;
-        GameSceneClass.gUiRootGame.GetComponentInChildren<UIGameCastleHpBar>().SetValues(this.hp, this.maxhp);
 
+        this.hp = Mathf.Clamp(hp, 0, maxHp);
+
+        GameSceneClass.gUiRootGame.GetComponentInChildren<UIGameCastleHpBar>().SetValues(this.hp, this.maxHp);
     }
 
     private void Die()

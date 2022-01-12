@@ -47,7 +47,7 @@ MonoBehaviour:
   myKind: 502
   myTrm: {fileID: 7318969509555711722}
   myVelocity: {x: -2.5, y: 0, z: 0}
-  damage: 5
+  damage: 20
   range: 4
   canAttack: 1
   attackTimer: 0
