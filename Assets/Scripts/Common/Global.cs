@@ -16,17 +16,26 @@ public enum ePrefabs
 {
     None = -1,
     MainCamera,
+
+
     HEROS = 1000,
     HeroMan,
     HeroGirl,
+
+
     MANAGERS = 2000,
     MGPool,
     MGGame,
+
+
     UI = 3000,
     UIRoot,
     UIRootLoading,
     UIRootTitle,
     UIRootGame,
+    UIGameCastleHpBar,
+    UIGameWaveBar,
+
 }
 
 public enum eSceneName

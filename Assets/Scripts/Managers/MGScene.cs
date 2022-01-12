@@ -147,6 +147,8 @@ public class MGScene : MonoBehaviour
         {
             GameObject.Instantiate(Global.prefabsDic[ePrefabs.MGPool]);
             GameObject.Instantiate(Global.prefabsDic[ePrefabs.MGGame]);
+            GameObject.Instantiate(Global.prefabsDic[ePrefabs.UIGameCastleHpBar],GameSceneClass.gUiRootGame.gameObject.transform);
+            GameObject.Instantiate(Global.prefabsDic[ePrefabs.UIGameWaveBar],GameSceneClass.gUiRootGame.gameObject.transform);
         }
 
         // if (curScene == eSceneName.Game)
