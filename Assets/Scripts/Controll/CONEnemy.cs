@@ -2,16 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CONEnemy : CONEntity
+public class CONEnemy : CONCharacter
 {
     public float maxHp;
     public float hp;
-    public float damage;
-    public float range;
-    public bool canAttack = true;
-
-    public float attackTimer;
-    public float attacktimerMax;
 
     public CONTower targetTower;
 
@@ -51,13 +45,11 @@ public class CONEnemy : CONEntity
     {
         base.Update();
 
-        print("나 실행중");
-
         if(IsInAttackRange() && canAttack)
         {
             myVelocity.x = 0;
 
-            AttackTower();
+            Attack();
             canAttack = false;
         }
 
@@ -73,14 +65,14 @@ public class CONEnemy : CONEntity
         }
     }
 
-    private void AttackTower()
+    protected override void Attack()
     {
         targetTower.Damaged(damage);
     }
 
-    private bool IsInAttackRange()
+    protected override bool IsInAttackRange()
     {
-        if(Mathf.Abs(transform.position.x - targetTower.gameObject.transform.position.x) <= range)
+        if(GetDistance(myTrm.position.x, targetTower.myTrm.position.x) <= range)
         {
             return true;
         }
