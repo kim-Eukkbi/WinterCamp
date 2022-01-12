@@ -49,7 +49,11 @@ MonoBehaviour:
   myVelocity: {x: -2.5, y: 0, z: 0}
   maxHp: 0
   hp: 0
-  damage: 0
+  damage: 5
+  range: 4
+  canAttack: 1
+  attackTimer: 0
+  attacktimerMax: 3
   targetTower: {fileID: 0}
 --- !u!212 &7318969509555711724
 SpriteRenderer:

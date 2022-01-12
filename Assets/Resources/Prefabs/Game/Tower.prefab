@@ -47,7 +47,7 @@ MonoBehaviour:
   myKind: 501
   myTrm: {fileID: 6121614945870123015}
   myVelocity: {x: 0, y: 0, z: 0}
-  hp: 0
+  hp: 100
 --- !u!212 &6121614945870123013
 SpriteRenderer:
   m_ObjectHideFlags: 0
