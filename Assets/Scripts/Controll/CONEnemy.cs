@@ -84,11 +84,12 @@ public class CONEnemy : CONCharacter
     {
         if(this.hp - damage <= 0)
         {
-            this.hp = 0;
             Die();
         }
 
         this.hp -= damage;
+
+        Mathf.Clamp(hp, 0, maxHp);
     }
 
     private void Die()
