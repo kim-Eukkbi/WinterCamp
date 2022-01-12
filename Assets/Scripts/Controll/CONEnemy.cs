@@ -7,15 +7,19 @@ public class CONEnemy : CONEntity
     public float maxHp;
     public float hp;
     public float damage;
+    public float range;
+    public bool canAttack = true;
 
-    private float attackTimer;
-    private float attcktimerMax;
+    public float attackTimer;
+    public float attacktimerMax;
 
     public CONTower targetTower;
 
     public override void Awake()
     {
         base.Awake();
+
+        cleanUpOnDisable();
     }
 
     public override void OnEnable()
@@ -31,7 +35,9 @@ public class CONEnemy : CONEntity
     protected override void cleanUpOnDisable()
     {
         hp = maxHp;
-        attackTimer = attcktimerMax;
+        attackTimer = attacktimerMax;
+
+        canAttack = true;
 
         targetTower = GameObject.FindObjectOfType<CONTower>();
     }
@@ -41,9 +47,45 @@ public class CONEnemy : CONEntity
         base.firstUpdate();
     }
 
+    public override void Update()
+    {
+        base.Update();
+
+        print("나 실행중");
+
+        if(IsInAttackRange() && canAttack)
+        {
+            myVelocity.x = 0;
+
+            AttackTower();
+            canAttack = false;
+        }
+
+        if(!canAttack)
+        {
+            if(attackTimer <= 0)
+            {
+                canAttack = true;
+                attackTimer = attacktimerMax;
+            }
+
+            attackTimer -= Time.deltaTime;
+        }
+    }
+
     private void AttackTower()
     {
         targetTower.Damaged(damage);
+    }
+
+    private bool IsInAttackRange()
+    {
+        if(Mathf.Abs(transform.position.x - targetTower.gameObject.transform.position.x) <= range)
+        {
+            return true;
+        }
+
+        return false;
     }
 
     public void Damaged(float damage)
