@@ -9,6 +9,8 @@ public class CONEnemy : CONCharacter
 
     public CONTower targetTower;
 
+    public GameObject hpBar;
+
     public override void Awake()
     {
         base.Awake();
@@ -90,6 +92,8 @@ public class CONEnemy : CONCharacter
         this.hp -= damage;
 
         Mathf.Clamp(hp, 0, maxHp);
+
+        hpBar.transform.localScale = new Vector3(hp / maxHp, 1, 1);
     }
 
     private void Die()

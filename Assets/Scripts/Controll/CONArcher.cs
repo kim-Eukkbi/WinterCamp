@@ -67,7 +67,8 @@ public class CONArcher : CONCharacter
 
     protected override void Attack()
     {
-        targetEnemy.Damaged(damage);
+        GameObject wapon = GameSceneClass.gMGPool.CreateObj(ePrefabs.Weapon, transform.position).gameObject;
+        wapon.GetComponent<Weapon>().LookTarget(targetEnemy,damage);
     }
 
     protected override bool IsInAttackRange()
