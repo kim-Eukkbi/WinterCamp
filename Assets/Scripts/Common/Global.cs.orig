@@ -16,10 +16,15 @@ public enum ePrefabs
 {
     None = -1,
     MainCamera,
+<<<<<<< HEAD
     ENTITYS = 500,
     Tower,
     Enemy,
     Archer,
+=======
+
+
+>>>>>>> d99fdb451e6a4596eb84144b782351970f23c566
     HEROS = 1000,
     HeroMan,
     HeroGirl,
@@ -28,7 +33,12 @@ public enum ePrefabs
     MANAGERS = 2000,
     MGPool,
     MGGame,
+<<<<<<< HEAD
     MGWave,
+=======
+
+
+>>>>>>> d99fdb451e6a4596eb84144b782351970f23c566
     UI = 3000,
     UIRoot,
     UIRootLoading,
