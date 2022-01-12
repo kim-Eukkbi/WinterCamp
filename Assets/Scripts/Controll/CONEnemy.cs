@@ -7,6 +7,9 @@ public class CONEnemy : CONCharacter
     public float maxHp;
     public float hp;
 
+    public bool isFreezed = false;
+    private Coroutine freezeCo;
+
     public CONTower targetTower;
 
     public GameObject hpBar;
@@ -45,6 +48,8 @@ public class CONEnemy : CONCharacter
 
     public override void Update()
     {
+        if(isFreezed) return;
+
         base.Update();
 
         if(IsInAttackRange() && canAttack)
@@ -96,8 +101,26 @@ public class CONEnemy : CONCharacter
         hpBar.transform.localScale = new Vector3(hp / maxHp, 1, 1);
     }
 
+    public void Freeze(float time)
+    {
+        if(freezeCo != null)
+        {
+            StopCoroutine(freezeCo);
+        }
+
+        freezeCo = StartCoroutine(UnFreeze(time));
+    }
+
+    private IEnumerator UnFreeze(float time)
+    {
+        yield return new WaitForSeconds(time);
+
+        isFreezed = false;
+    }
+
     private void Die()
     {
         base.SetActive(false);
+        StopCoroutine(freezeCo);
     }
 }

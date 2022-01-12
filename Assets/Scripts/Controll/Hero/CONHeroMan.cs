@@ -4,5 +4,38 @@ using UnityEngine;
 
 public class CONHeroMan : CONHero
 {
-    // 히어로 개별 유닛이 가지는 특성 구현
+    public float freezeTime;
+
+    public override void Awake()
+    {
+        base.Awake();
+    }
+
+    public override void OnEnable()
+    {
+        base.OnEnable();
+    }
+
+    public override void OnDisable()
+    {
+        base.OnDisable();
+    }
+
+    protected override void firstUpdate()
+    {
+        base.firstUpdate();
+    }
+
+    public override void Update() 
+    {
+        base.Update();
+    }
+
+    public override void UseSkill()
+    {
+        foreach(CONEnemy enemy in GameSceneClass.gMGWave.enemyList)
+        {
+            
+        }
+    }
 }

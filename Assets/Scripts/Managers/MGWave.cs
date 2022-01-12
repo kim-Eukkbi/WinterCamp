@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
+using System;
 
 public class MGWave : MonoBehaviour
 {
@@ -30,6 +31,12 @@ public class MGWave : MonoBehaviour
 
     private void Start()
     {
+        GameSceneClass.gMGGame.WaveClear += () =>
+        {
+            enemyList.Clear();
+            StartCoroutine(StartWave());
+        };
+
        StartCoroutine(StartWave());
     }
 
@@ -38,7 +45,7 @@ public class MGWave : MonoBehaviour
         for(int i = 0; i < waveList[nextWave].enemyAmount; i++)
         {
             yield return new WaitForSeconds(.2f);
-            Vector3 spawnPos = new Vector3(enemySpawnPos.x, enemySpawnPos.y + Random.Range(ranMinY, ranMaxY));
+            Vector3 spawnPos = new Vector3(enemySpawnPos.x, enemySpawnPos.y + UnityEngine.Random.Range(ranMinY, ranMaxY));
             
             enemyList.Add(GameSceneClass.gMGPool.CreateObj(ePrefabs.Enemy, spawnPos) as CONEnemy);
 
@@ -47,5 +54,24 @@ public class MGWave : MonoBehaviour
         }
 
         nextWave++;
+    }
+
+    public void CheckWaveClear()
+    {
+        bool isWaveClear = true;
+
+        foreach(CONEnemy enemy in enemyList)
+        {
+            if(enemy.IsActive())
+            {
+                isWaveClear = false;
+            }
+        }
+
+        if(isWaveClear)
+        {
+            //웨이브 클리어
+            GameSceneClass.gMGGame.WaveClear?.Invoke();
+        }
     }
 }

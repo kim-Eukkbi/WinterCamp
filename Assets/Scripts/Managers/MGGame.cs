@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public class MGGame : MonoBehaviour
 {
@@ -10,6 +11,12 @@ public class MGGame : MonoBehaviour
     // public MGHero.MGHero _gHeroManager;
 
     List<CONEntity> heroConList = new List<CONEntity>();
+
+    public int cost; //스킬을 사용할 수 있는 코스트
+
+    public Action GameOver = () => {};
+    public Action WaveClear = () => {};
+
     void Awake()
     {
         GameSceneClass.gMGGame = this;
@@ -37,21 +44,21 @@ public class MGGame : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Q))
-        {
-            CONEntity heroCon = GameSceneClass.gMGPool.CreateObj(ePrefabs.HeroGirl, Random.insideUnitCircle);
-            heroConList.Add(heroCon);
-        }
+        // if (Input.GetKeyDown(KeyCode.Q))
+        // {
+        //     CONEntity heroCon = GameSceneClass.gMGPool.CreateObj(ePrefabs.HeroGirl, Random.insideUnitCircle);
+        //     heroConList.Add(heroCon);
+        // }
 
-        if (Input.GetKeyDown(KeyCode.W))
-        {
-            if (heroConList.Count > 0)
-            {
-                heroConList[heroConList.Count - 1].SetActive(false);
-                heroConList.RemoveAt(heroConList.Count - 1);
-            }
+        // if (Input.GetKeyDown(KeyCode.W))
+        // {
+        //     if (heroConList.Count > 0)
+        //     {
+        //         heroConList[heroConList.Count - 1].SetActive(false);
+        //         heroConList.RemoveAt(heroConList.Count - 1);
+        //     }
 
-        }
+        // }
 
 
 
