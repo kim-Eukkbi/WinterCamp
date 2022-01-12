@@ -50,7 +50,7 @@ public class MGWave : MonoBehaviour
             enemyList.Add(GameSceneClass.gMGPool.CreateObj(ePrefabs.Enemy, spawnPos) as CONEnemy);
 
             GameSceneClass.gUiRootGame.GetComponentInChildren<UIGameWaveBar>()
-                .SetValues(enemyList.Count, GameSceneClass.gMGPool.poolObjCount[0], nextWave +1);
+                .SetValues(enemyList.Count, waveList[nextWave].enemyAmount, nextWave +1);
         }
 
         nextWave++;
