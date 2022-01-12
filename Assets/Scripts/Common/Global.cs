@@ -39,7 +39,7 @@ public enum ePrefabs
     UIRootGame,
     UIGameCastleHpBar,
     UIGameWaveBar,
-
+    UIGameSkillBar,
 }
 
 public enum eSceneName

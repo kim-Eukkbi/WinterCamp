@@ -30,7 +30,6 @@ public class UIGameCastleHpBar : MonoBehaviour
     {
         castleHp = curHp;
         hpAmount = curHp / maxHp;
-        print(hpAmount);
         Init();
     }
 
